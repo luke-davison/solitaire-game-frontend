@@ -1,0 +1,13 @@
+.played-cards {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.played-cards-column {
+    width: 150px;
+}
+
+.played-card {
+    width: 100%;
+}

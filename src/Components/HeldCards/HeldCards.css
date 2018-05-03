@@ -1,0 +1,16 @@
+.held-cards {
+    width: 150px;
+    position: absolute;
+}
+
+.played-cards-column {
+    width: 150px;
+}
+
+.played-card {
+    width: 100%;
+}
+
+.held-cards img {
+    filter: brightness(70%)
+}

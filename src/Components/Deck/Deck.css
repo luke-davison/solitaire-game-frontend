@@ -1,0 +1,4 @@
+.deck, .draw-pile, .discard-pile {
+    display: flex;
+    flex-direction: row;
+}
