@@ -7,11 +7,12 @@ import { HeldCards } from '../HeldCards/HeldCards';
 import { PlayedCards } from '../PlayedCards/PlayedCards';
 import { getDeck, getWinningMessage } from './api';
 import { dealCards } from './dealCards';
+import { HiddenImages } from './HiddenImages';
 import { IDiscards, IGoalCards, IHeldCards, IPlayedCard, ITableState } from './ITableState';
 
 import "./Table.css"
 
-export class Table extends React.Component <{}, ITableState> {
+export  class Table extends React.Component <{}, ITableState> {
     constructor(props: {}) {
         super(props);
         this.state = {
@@ -46,6 +47,7 @@ export class Table extends React.Component <{}, ITableState> {
             </div>
             <PlayedCards playedCards={this.state.playedCards} />
             <HeldCards heldCards={this.state.heldCards.cards} mouse={this.state.mouse}/>
+            <HiddenImages />
         </div>
         );
     }

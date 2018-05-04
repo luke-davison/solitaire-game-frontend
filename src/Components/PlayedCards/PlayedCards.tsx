@@ -10,7 +10,7 @@ export class PlayedCards extends React.Component <{playedCards: IPlayedCard[][]}
     return (
       <div className="played-cards">
         {this.props.playedCards.map((column, columnNo: number) => {
-            const columnStyle = {width: "150px", maxWidth: (1 / this.props.playedCards.length * 100) + "%"}
+            const columnStyle = {width: "150px"}
             return (
                 <div className="played-cards-column" key={columnNo} style={columnStyle} >
                     {column.map((card, i: number) => (
