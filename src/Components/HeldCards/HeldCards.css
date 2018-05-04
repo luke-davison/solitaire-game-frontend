@@ -1,14 +1,13 @@
-.held-cards {
-    width: 150px;
-    position: absolute;
-}
-
 .played-cards-column {
     width: 150px;
 }
 
 .played-card {
     width: 100%;
+}
+
+.held-card {
+    position: absolute;
 }
 
 .held-cards img {

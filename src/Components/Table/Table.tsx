@@ -190,7 +190,7 @@ export  class Table extends React.Component <{}, ITableState> {
             }
         } else {
             const columnCard = column[column.length - 1];
-            if (!columnCard.faceDown && columnCard.card.suit !== heldCard.suit && columnCard.card.value === heldCard.value + 1) {
+            if (!columnCard.faceDown && columnCard.card.color !== heldCard.color && columnCard.card.value === heldCard.value + 1) {
                 return this.addHeldCardsToColumn(columnNo);
             }
         }
