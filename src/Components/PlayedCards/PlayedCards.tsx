@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import { Card } from '../Card/Card';
+import { EmptyPile } from '../Card/EmptyPile'
 import { IPlayedCard } from '../Table/ITableState';
 
 import './PlayedCards.css';
@@ -18,6 +19,7 @@ export class PlayedCards extends React.Component <{playedCards: IPlayedCard[][]}
                             <Card card={card} />
                         </div>
                     ))}
+                    {!column.length && <div className="played-card" style={{position: "absolute", top: "220px"}}><EmptyPile /></div>}
                 </div>
             )
         })}

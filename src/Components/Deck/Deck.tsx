@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import { Card } from '../Card/Card';
+import { EmptyPile } from '../Card/EmptyPile';
 import { ICardDetails, imagePath } from '../Card/getCardDetails';
 import { IDiscards } from '../Table/ITableState';
 
@@ -11,7 +12,10 @@ export class Deck extends React.Component <{deck: ICardDetails[], discards: IDis
     return (
         <div className="deck">
             <div className="draw-pile">
-                {this.props.deck.length > 0 && <img src={imagePath + "cardBack_green5.png"} />}
+                {this.props.deck.length > 0 
+                    ? <img src={imagePath + "cardBack_green5.png"} />
+                    : <EmptyPile />
+                }
             </div>
             <div className="discard-pile">
                 {this.props.discards.showing > 2 &&
