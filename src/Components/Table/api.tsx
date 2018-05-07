@@ -12,20 +12,19 @@ export function getDeck(): Promise<ICardDetails[]> {
 
 function getDummyDeck(): ICardDetails[] {
     const predefinedPositions: Array<{position: number, value: number, card?: ICardDetails}> = [
-        {position: 5, value: 8},
-        {position: 8, value: 5},
-        {position: 11, value: 7},
-        {position: 14, value: 1},
-        {position: 17, value: 5},
-        {position: 20, value: 7},
-        {position: 23, value: 1},
-        {position: 4, value: 2},
-        {position: 7, value: 1},
-        {position: 10, value: 6},
-        {position: 13, value: 4},
-        {position: 16, value: 7},
-        {position: 19, value: 3},
-        {position: 22, value: 10},
+        {position: 21, value: 3},
+        {position: 18, value: 7},
+        {position: 15, value: 4},
+        {position: 12, value: 8},
+        {position: 9, value: 2},
+        {position: 6, value: 7},
+        {position: 24, value: 1},
+        {position: 26, value: 7},
+        {position: 29, value: 5},
+        {position: 33, value: 1},
+        {position: 38, value: 8},
+        {position: 44, value: 2},
+        {position: 51, value: 2}
     ];
     const allCards: ICardDetails[] = [];
     for (let i = 0; i < 52; i++) {
