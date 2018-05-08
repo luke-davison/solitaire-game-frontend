@@ -152,6 +152,7 @@ export  class Table extends React.Component <{}, ITableState> {
         if (this.state.discards.cards.length) {
             const drawnCard = this.state.discards.cards.pop();
             if (drawnCard) {
+                this.state.heldCards.location = "deck";
                 this.state.heldCards.cards.push(drawnCard);
                 if (this.state.discards.showing > 1 || !this.state.discards.cards.length) {
                     this.state.discards.showing--;
