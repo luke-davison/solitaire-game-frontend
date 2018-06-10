@@ -12,8 +12,12 @@ import { IDiscards, IGoalCards, IHeldCards, IPlayedCard, ITableState } from './I
 
 import "./Table.css"
 
-export  class Table extends React.Component <{}, ITableState> {
-    constructor(props: {}) {
+interface ITableProps {
+    match: {params: {game: number}}
+}
+
+export  class Table extends React.Component <ITableProps, ITableState> {
+    constructor(props: ITableProps) {
         super(props);
         this.state = {
             deck: [],
@@ -33,7 +37,7 @@ export  class Table extends React.Component <{}, ITableState> {
         this.playHeldCards = this.playHeldCards.bind(this);
         this.addGoalCard = this.addGoalCard.bind(this);
         this.checkForWin = this.checkForWin.bind(this);
-        getDeck().then((deck: ICardDetails[]) => {
+        getDeck(this.props.match.params.game).then((deck: ICardDetails[]) => {
             this.setState(dealCards(deck))
         })
     }
@@ -238,7 +242,7 @@ export  class Table extends React.Component <{}, ITableState> {
             }
         })
         if (hasWon) {
-            getWinningMessage().then(message => {
+            getWinningMessage(this.props.match.params.game).then(message => {
                 alert(message);
             })
         }
