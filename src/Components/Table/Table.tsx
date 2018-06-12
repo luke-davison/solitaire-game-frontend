@@ -250,7 +250,7 @@ export  class Table extends React.Component <ITableProps, ITableState> {
     }
 
     private findGoalCards(suit: string): IGoalCards | undefined {
-        let suitGoal: IGoalCards | undefined = undefined
+        let suitGoal: IGoalCards | undefined
         this.state.goalCards.forEach(goalCard => {
             if (goalCard.suit === suit) {
                 suitGoal = goalCard;
