@@ -16,7 +16,7 @@ interface ITableProps {
     match: {params: {game: number}}
 }
 
-export  class Table extends React.Component <ITableProps, ITableState> {
+export class Table extends React.Component <ITableProps, ITableState> {
     constructor(props: ITableProps) {
         super(props);
         this.state = {
