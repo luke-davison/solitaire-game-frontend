@@ -12,12 +12,10 @@ import { IDiscards, IGoalCards, IHeldCards, IPlayedCard, ITableState } from './I
 
 import "./Table.css"
 
-interface ITableProps {
-    match: {params: {game: number}}
-}
+const GAME_ID = 1
 
-export class Table extends React.Component <ITableProps, ITableState> {
-    constructor(props: ITableProps) {
+export class Table extends React.Component <{}, ITableState> {
+    constructor(props: {}) {
         super(props);
         this.state = {
             deck: [],
@@ -37,7 +35,7 @@ export class Table extends React.Component <ITableProps, ITableState> {
         this.playHeldCards = this.playHeldCards.bind(this);
         this.addGoalCard = this.addGoalCard.bind(this);
         this.checkForWin = this.checkForWin.bind(this);
-        getDeck(this.props.match.params.game).then((deck: ICardDetails[]) => {
+        getDeck(GAME_ID).then((deck: ICardDetails[]) => {
             this.setState(dealCards(deck))
         })
     }
@@ -206,7 +204,6 @@ export class Table extends React.Component <ITableProps, ITableState> {
         if (this.state.heldCards.cards.length === 1) {
             const heldCard = this.state.heldCards.cards[0];
             const suitGoal = this.findGoalCards(heldCard.suit)
-            // const suitGoal = this.state.goalCards.find(goalCard => goalCard.suit === heldCard.suit)
             if (suitGoal) {
                 if (!suitGoal.cards.length) {
                     if (heldCard.value === 1) {
@@ -243,7 +240,7 @@ export class Table extends React.Component <ITableProps, ITableState> {
             }
         })
         if (hasWon) {
-            getWinningMessage(this.props.match.params.game).then(message => {
+            getWinningMessage(GAME_ID).then(message => {
                 alert(message);
             })
         }
@@ -258,13 +255,4 @@ export class Table extends React.Component <ITableProps, ITableState> {
         })
         return suitGoal
     }
-}
-
-
-export interface ITableState {
-    deck: ICardDetails[];
-    discards: ICardDetails[];
-    playedCards: IPlayedCard[][];
-    goalCards: ICardDetails[][];
-    heldCards: IHeldCards;
 }

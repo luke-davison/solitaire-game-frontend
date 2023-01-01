@@ -13,7 +13,7 @@ export class Deck extends React.Component <{deck: ICardDetails[], discards: IDis
         <div className="deck">
             <div className="draw-pile">
                 {this.props.deck.length > 0 
-                    ? <img src={imagePath + "cardBack_green5.png"} />
+                    ? <img src={imagePath + "cardBack_green5.png"} draggable={false} />
                     : <EmptyPile />
                 }
             </div>

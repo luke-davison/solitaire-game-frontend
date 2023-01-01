@@ -10,7 +10,7 @@ export class Card extends React.Component <{card: IPlayedCard}, {}> {
     const cardUrl = this.props.card.faceDown ? imagePath + "cardBack_green5.png" : this.props.card.card.url;
     return (
       <div className="card">
-        <img src={cardUrl} />
+        <img src={cardUrl} draggable={false}/>
       </div>
     );
   }

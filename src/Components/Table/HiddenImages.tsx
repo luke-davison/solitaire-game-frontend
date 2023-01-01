@@ -13,7 +13,7 @@ export class HiddenImages extends React.Component <{}, {}> {
         }
         return (
         <div className="hidden-images" style={{display: "none"}}>
-            {arr.map((url, i) => <img src={url} key={i} />)}
+            {arr.map((url, i) => <img src={url} key={i} draggable={false} />)}
         </div>
         );
     }

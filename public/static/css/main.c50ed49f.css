@@ -1,0 +1,2 @@
+.deck,.discard-pile,.draw-pile,.goal-cards{display:flex;flex-direction:row}.goal-cards{left:450px}.goal-cards,.held-card{position:absolute}.held-cards img{-webkit-filter:brightness(70%);filter:brightness(70%)}.played-cards{display:flex;flex-direction:row;width:100%}.played-cards-column{width:150px}.played-card{width:100%}.table,body{background-color:#90ee90}.table{height:100vh;width:100%}.top-cards{display:flex;flex-direction:row;width:100%}body{font-family:sans-serif;margin:0;padding:0}
+/*# sourceMappingURL=main.c50ed49f.css.map*/
