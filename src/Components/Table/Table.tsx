@@ -35,6 +35,7 @@ export class Table extends React.Component <{}, ITableState> {
         this.playHeldCards = this.playHeldCards.bind(this);
         this.addGoalCard = this.addGoalCard.bind(this);
         this.checkForWin = this.checkForWin.bind(this);
+        this.autoComplete = this.autoComplete.bind(this);
         getDeck(GAME_ID).then((deck: ICardDetails[]) => {
             this.setState(dealCards(deck))
         })
@@ -85,6 +86,8 @@ export class Table extends React.Component <{}, ITableState> {
         }
         const rowNumber = Math.floor((this.state.mouse.y - 220) / 30);
 
+        setTimeout(this.autoComplete, 100)
+
         if (!this.state.heldCards.cards.length) {
             if (rowNumber >= -1) {
                 return this.pickupPlayedCards(columnNumber, rowNumber);
@@ -99,7 +102,7 @@ export class Table extends React.Component <{}, ITableState> {
             if (rowNumber >= -1) {
                 return this.playHeldCards(columnNumber);
             }
-            if (rowNumber < 2) {
+            if (rowNumber < 2 && columnNumber > 2) {
                 return this.addGoalCard();
             }
         }
@@ -254,5 +257,49 @@ export class Table extends React.Component <{}, ITableState> {
             }
         })
         return suitGoal
+    }
+
+    private autoComplete() {
+        if (this.state.heldCards.cards.length) {
+            return
+        }
+
+        let movedCard: boolean = false
+        this.state.playedCards.forEach((pile, index) => {
+            if (pile.length && !movedCard) {
+                if (pile[pile.length - 1].faceDown) {
+                    return 
+                }
+
+                const topCard = pile[pile.length - 1].card
+                let ableToPlace = topCard.value === 1
+                let goalCardsPlaced = 0
+                console.log('topCard', topCard.number, topCard.suit)
+                this.state.goalCards.forEach(goalPile => {
+                    if (goalPile.cards.length) {
+                        const topGoalCard = goalPile.cards[goalPile.cards.length - 1]
+                        if (topCard.color !== topGoalCard.color) {
+                            if (topCard.value <= topGoalCard.value + 2) {
+                                goalCardsPlaced++
+                            }
+                        }
+                        if (topCard.suit === topGoalCard.suit) {
+                            if (topCard.value === topGoalCard.value + 1) {
+                                ableToPlace = true
+                            }
+                        }
+                    } 
+                })
+                if (ableToPlace && (goalCardsPlaced === 2 || topCard.value < 3)) {
+                    this.pickupPlayedCards(index, pile.length)
+                    this.addGoalCard()
+                    movedCard = true
+                }
+            }
+        })
+
+        if (movedCard) {
+            setTimeout(this.autoComplete, 200)
+        }
     }
 }
