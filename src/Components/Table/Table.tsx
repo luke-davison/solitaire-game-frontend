@@ -12,7 +12,7 @@ import { IDiscards, IGoalCards, IHeldCards, IPlayedCard, ITableState } from './I
 
 import "./Table.css"
 
-const GAME_ID = 1
+const GAME_ID = 2
 
 export class Table extends React.Component <{}, ITableState> {
     constructor(props: {}) {
