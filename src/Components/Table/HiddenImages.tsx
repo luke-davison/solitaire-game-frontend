@@ -8,7 +8,7 @@ export class HiddenImages extends React.Component <{}, {}> {
 
     public render() {
         const arr: string[] = []
-        for (let i = 0; i < 51; i++) {
+        for (let i = 0; i < 52; i++) {
             arr.push(getCardDetails(i).url)
         }
         return (
